@@ -4,7 +4,9 @@ class Questions extends Component {
   render() {
       return <section>
           <div className="wrapper">
-              <h3>Questions</h3>
+
+          
+
           </div>
       </section>;
   }

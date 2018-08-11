@@ -11,9 +11,12 @@ export default class Login extends Component {
             </div>
             <div className='box-content center'>
               <h1>Sign in</h1>
-              <select onChange={(event) => this.props.changeUser(event.target.value)} value={'none'}>
-                <option value="" disabled selected>Select User</option>
-              </select>
+              <form>
+                <select onChange={(event) => this.props.changeUser(event.target.value)} value={'none'}>
+                  <option value="" disabled selected>Select User</option>
+                </select>
+                <button>Sign In</button>
+              </form>
             </div>
           </div>
         </div>

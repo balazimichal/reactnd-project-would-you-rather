@@ -4,26 +4,35 @@ body{
     font-size: 14px;
 }
 
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    padding: 0;
+}
+
 h1{
     font-size:34px;
     line-height: 48px;
-    color: purple
+    color: purple;
+    margin-bottom: 30px;
 }
 
 h2{
     font-size:28px;
     line-height: 34px;
+    margin-bottom: 30px;
 }
 
 h3{
     font-size:22px;
     line-height: 28px;
+    margin-bottom: 30px;
 }
 
 
-h1, h2, h3, h4, h5, h6{
-    margin: 0;
-    padding: 0;
+
+
+section p{
+    font-size:18px;
 }
 
 .wrapper{
@@ -69,6 +78,8 @@ h1, h2, h3, h4, h5, h6{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    margin-right: 0;
+    margin-left: 35px;
 }
 
 .header .login-nav a:hover{
@@ -88,6 +99,12 @@ section{
     border-radius: 5px;
 }
 
+.box:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
 .box-header{
     padding: 30px;
     background: #f3f3f3;
@@ -98,15 +115,119 @@ section{
     padding: 30px;
 }
 
+.box-content:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.box.card{
+    padding: 20px;
+}
+
 .center{
     text-align:center;
 }
 
-input, select{
+input[type=text], select{
     height: 48px;
     line-height: 48px;
+    font-size: 16px;
+    width: 96%;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 0 2%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=radio]{
+    margin-bottom: 20px;
+}
+
+button{
+    height: 48px;
     padding: 10px;
     font-size: 16px;
     width: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid purple;
+    background: purple;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+button:hover{
+    background: #000;
+}
+
+form {margin: 20px 0;}
+
+center{
+    margin-bottom:20px;
+    font-size:18px;
+    color:#ddd;
+    font-weight:bold;
+}
+
+.avatar{
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.box-left{
+    float:left;
+    width:150px;
+}
+
+.box-right{
+    float:left;
+    width: calc(100% - 202px);
+    padding-left:25px;
+    margin-left:25px;
+    border-left:2px solid #ddd;
+}
+
+.box-second{
+    float:left;
+    width: calc(70% - 130px);
+    padding-left:24px;
+    margin-left:24px;
+    border-left:2px solid #ddd;
+}
+
+.box-third{
+    float:left;
+    width: calc(30% - 130px);
+    padding-left:24px;
+    margin-left:24px;
+    border-left:2px solid #ddd;
+    text-align:center;
+}
+
+hr{
+    border:none;
+    height:2px;
+    background:#ddd
+}
+
+.alignright{
+    float: right;
+}
+
+.score{
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: purple;
+    color: #fff;
+    font-size:30px;
+    display:inline-block;
+    padding:30px;
 }
