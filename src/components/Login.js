@@ -4,7 +4,18 @@ export default class Login extends Component {
   render() {
     return <section>
         <div className="wrapper">
-          <h3>Login</h3>
+          <div className="box">
+            <div className='box-header center'>
+              <h3>Welcome to the Would You Rather App!</h3>
+              <h5>Please sign in to continue</h5>
+            </div>
+            <div className='box-content center'>
+              <h1>Sign in</h1>
+              <select onChange={(event) => this.props.changeUser(event.target.value)} value={'none'}>
+                <option value="" disabled selected>Select User</option>
+              </select>
+            </div>
+          </div>
         </div>
       </section>;
   }
