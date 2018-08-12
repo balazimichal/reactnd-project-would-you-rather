@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
 
-export default class Login extends Component {
+class Login extends Component {
+  
+  componentDidMount() {
+    console.log('test')
+    this.props.dispatch(handleInitialData())
+  }
+
   render() {
     return <section>
         <div className="wrapper">
@@ -23,3 +31,5 @@ export default class Login extends Component {
       </section>;
   }
 }
+
+export default connect()(Login)
