@@ -5,7 +5,12 @@ class Questions extends Component {
       return <section>
           <div className="wrapper">
 
-          
+            <div className="box">
+                <div className="">
+                </div>
+                <div className="">
+                </div>
+            </div>
 
           </div>
       </section>;
