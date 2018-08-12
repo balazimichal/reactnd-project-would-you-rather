@@ -13,7 +13,7 @@ export default class Login extends Component {
               <h1>Sign in</h1>
               <form>
                 <select onChange={(event) => this.props.changeUser(event.target.value)} value={'none'}>
-                  <option value="" disabled selected>Select User</option>
+                  <option value="" disabled defaultValue>Select User</option>
                 </select>
                 <button>Sign In</button>
               </form>

@@ -1,5 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import middleware from './middleware'
+import reducer from './reducers'
 import Header from './components/Header'
 import Login from './components/Login'
 import Questions from './components/Questions'
@@ -9,9 +13,12 @@ import Add from './components/Add'
 import NotFound from './components/NotFound'
 import './App.css'
 
+const store = createStore(reducer, middleware)
+
 class App extends Component {
   render() {
-    return <Router>
+    return <Provider store={store}>
+    <Router>
         <Fragment>
           <Header />
           <Switch>
@@ -23,7 +30,8 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </Fragment>
-      </Router>;
+      </Router>
+    </Provider>;
   }
 }
 

@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   render() {
     return <header className="header">
           <div className="wrapper">
             <nav className="main-nav">
-              <Link to="/" activeClassName="current">
+              <Link to="/">
                 Home
               </Link>
-              <Link to="/add" activeClassName="current">
+              <Link to="/add">
                 New Question
               </Link>
-              <Link to="/leaderboard" activeClassName="current">
+              <Link to="/leaderboard">
                 Leaderboard
               </Link>
             </nav>
 
             <nav className="login-nav">
-              <Link to="/" activeClassName="current">
+              <Link to="/">
                 Login
               </Link>
             </nav>
