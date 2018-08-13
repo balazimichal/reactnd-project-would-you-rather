@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import QuestionDashbaord from './QuestionDashboard'
 
 class Questions extends Component {
   render() {
@@ -8,7 +9,7 @@ class Questions extends Component {
           <div className="wrapper">
               {this.props.questionIds.map((id) => (
                   <div className="box" key={id}>
-                      {id}
+                      <QuestionDashbaord id={id} />
                   </div>
               ))}
           </div>
@@ -23,8 +24,3 @@ function mapStateToProps({ questions }) {
 }
 
 export default connect(mapStateToProps)(Questions)
-
-
-/*
-
-*/
