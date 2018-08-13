@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
+import LoadingBar from 'react-redux-loading'
 import Header from './components/Header'
 import Login from './components/Login'
 import Questions from './components/Questions'
@@ -22,6 +23,7 @@ class App extends Component {
   render() {
     return <Router>
         <Fragment>
+        <LoadingBar style={{ backgroundColor: 'purple', height: '3px' }} />
           <Header />
           <Switch>
             {this.props.logedin === true
