@@ -8,7 +8,7 @@ class LeaderboardBox extends Component {
           return <p>This question does not exist.</p>
       }
 
-      const { name, avatar, id, answers, questions } = this.props
+      const { name, avatar, answers, questions } = this.props
 
     return (
         <div className="box card">
@@ -33,7 +33,7 @@ class LeaderboardBox extends Component {
 function mapStateToProps({ users }, { id }) {
     const user = users[id]
 
-    return { name: user.name, id: user.id, avatar: user.avatarURL, answers: Object.keys(user.answers).length, questions: user.questions.length };
+    return { name: user.name, avatar: user.avatarURL, answers: Object.keys(user.answers).length, questions: user.questions.length };
 
 }
 
