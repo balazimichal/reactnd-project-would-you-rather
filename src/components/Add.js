@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from "react-router-dom";
 
 class Add extends Component {
   state = {
     questionOne : '',
-    questionTwo : ''
+    questionTwo : '',
+    redirectHome : false,
   }
 
   handleQuestionOne = (e) => {
@@ -29,17 +31,21 @@ class Add extends Component {
     const { dispatch } = this.props
 
     dispatch(handleAddQuestion(questionOne, questionTwo));
-    console.log(questionOne, questionTwo)
     
     this.setState(() => ({
       questionOne : '',
-      questionTwo : ''
+      questionTwo : '',
+      redirectHome : true
     }))
 
-    // TODO: redicrect user to home
   }
 
   render() {
+
+    if (this.state.redirectHome === true) {
+      return <Redirect to='/' />
+    }
+
     return <section>
         <div className="wrapper">
           <div className='box'>

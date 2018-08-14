@@ -18,7 +18,7 @@ class Header extends Component {
             </nav>
 
             <nav className="login-nav">
-              <Link to="/">
+              <Link to="/login">
                 Login
               </Link>
             </nav>

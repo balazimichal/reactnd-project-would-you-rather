@@ -26,9 +26,8 @@ class App extends Component {
         <LoadingBar style={{ backgroundColor: 'purple', height: '3px' }} />
           <Header />
           <Switch>
-            {this.props.logedin === true
-            ? <Route exact path="/" component={Login} />
-            : <Route exact path="/questions" component={Questions} />}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Questions} />
             <Route exact path="/questions/:question_id" component={Question} />
             <Route exact path="/leaderboard" component={Leaderboard} />
             <Route exact path="/add" component={Add} />
@@ -47,3 +46,10 @@ function mapStateToProps ({ authedUser }) {
 }
 
 export default connect(mapStateToProps)(App);
+
+
+/*
+{this.props.logedin === true
+            ? <Route exact path="/" component={Login} />
+            : <Route exact path="/questions" component={Questions} />}
+*/
