@@ -70,16 +70,21 @@ section p{
     float: left;
 }
 
+.header .login-nav{
+    float: right;
+    margin-left: 35px;
+    line-height: 30px;
+}
+
 .header .login-nav a {
     background: purple;
     color: white;
-    float: right;
     padding: 5px 15px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-right: 0;
-    margin-left: 35px;
+    margin-left: 10px;
 }
 
 .header .login-nav a:hover{
