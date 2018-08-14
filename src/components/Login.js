@@ -23,6 +23,9 @@ class Login extends Component {
 
   render() {
 
+
+
+
     if (this.state.redirectHome === true) {
       return <Redirect to='/' />
     }
@@ -39,8 +42,8 @@ class Login extends Component {
               <form onSubmit={this.handleLogin}>
                 <select onChange={this.changeUser} value={this.state.user}>
                   <option value='none' disabled defaultValue>Select User</option>
-                  {this.props.users.map((user) => (
-                    <option key={user} value={user}>{user}</option>      
+                  {this.props.userIds.map((userId) => (
+                  <option key={userId} value={userId}>{this.props.users[userId].name}</option>      
                   ))}
                 </select>
               <button disabled={this.state.user === 'none'}>Sign In</button>
@@ -54,7 +57,8 @@ class Login extends Component {
 
 function mapStateToProps({ users }) {
   return {
-    users: Object.keys(users),
+    userIds: Object.keys(users),
+    users
   }
 }
 

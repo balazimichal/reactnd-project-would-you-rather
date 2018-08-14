@@ -4,7 +4,6 @@ import QuestionDashbaord from './QuestionDashboard'
 
 class Questions extends Component {
   render() {
-      console.log(this.props)
       return <section>
           <div className="wrapper">
               {this.props.questionIds.map((id) => (

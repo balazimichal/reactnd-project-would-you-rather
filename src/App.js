@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.logedin)
     return <Router>
         <Fragment>
         <LoadingBar style={{ backgroundColor: 'purple', height: '3px' }} />

@@ -5,17 +5,19 @@ import { connect } from 'react-redux'
 
 class Header extends Component {
 
-
-
-
-
   render() {
+
+    const {authedUser, users} = this.props
+
     let button
 
-    if (this.props.logedin === null) {
+    if (authedUser === null) {
       button = <span><Link to="/login">Login</Link></span>
     } else {
-      button = <span>Hello, {this.props.logedin} <Link to="/logout">Logout</Link></span>
+      button = <span>
+          <img src={users[authedUser].avatarURL} alt="" />
+          Hello, {users[authedUser].name} <Link to="/logout">Logout</Link>
+        </span>;
     }
 
 
@@ -43,9 +45,10 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    logedin: authedUser
+    authedUser,
+    users
   }
 }
 

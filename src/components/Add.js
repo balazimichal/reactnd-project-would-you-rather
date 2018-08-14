@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
-import { Redirect } from "react-router-dom";
+import { withRouter } from 'react-router-dom'
 
 class Add extends Component {
   state = {
     questionOne : '',
     questionTwo : '',
-    redirectHome : false,
   }
 
   handleQuestionOne = (e) => {
@@ -31,20 +30,17 @@ class Add extends Component {
     const { dispatch } = this.props
 
     dispatch(handleAddQuestion(questionOne, questionTwo));
-    
+
     this.setState(() => ({
       questionOne : '',
       questionTwo : '',
-      redirectHome : true
     }))
+
+    this.props.history.push('/')
 
   }
 
   render() {
-
-    if (this.state.redirectHome === true) {
-      return <Redirect to='/' />
-    }
 
     return <section>
         <div className="wrapper">
@@ -68,4 +64,4 @@ class Add extends Component {
   }
 }
 
-export default connect()(Add)
+export default withRouter(connect()(Add))

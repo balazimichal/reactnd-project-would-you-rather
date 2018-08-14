@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
 
 class QuestionDashboard extends Component {
 
 
+
+
     viewPoll = (id) => {
-        console.log(id)
+        this.props.history.push(`questions/${id}`)
     }
 
 
   render() {
-
 
     if(this.props === null) {
         return <p>This question does not exist.</p>
@@ -52,4 +54,4 @@ function mapStateToProps({ questions, users }, {id}) {
             }
 
         }
-export default connect(mapStateToProps)(QuestionDashboard)
+export default withRouter(connect(mapStateToProps)(QuestionDashboard))

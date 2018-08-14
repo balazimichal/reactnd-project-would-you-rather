@@ -74,6 +74,18 @@ section p{
     float: right;
     margin-left: 35px;
     line-height: 30px;
+    position:relative;
+}
+
+.header .login-nav img{
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin: 0 10px;
+    position:absolute;
+    left:-50px
 }
 
 .header .login-nav a {
