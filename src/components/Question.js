@@ -25,10 +25,10 @@ class Question extends Component {
                 <h1>Would You Rather ...</h1>
                 <form>
                   <div>
-                    <input type="radio" name="option" value="" /> {questionOne}
+                    <input type="radio" name="option" /> {questionOne}
                   </div>
                   <div>
-                    <input type="radio" name="options" value="" /> {questionTwo}
+                    <input type="radio" name="options"  /> {questionTwo}
                   </div>
                   <button>Submit</button>
                 </form>

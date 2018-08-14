@@ -17,24 +17,33 @@ import './App.css'
 
 class App extends Component {
 
+
+
+
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
 
   render() {
+
+
+
+
     return <Router>
         <Fragment>
-        <LoadingBar style={{ backgroundColor: 'purple', height: '3px' }} />
+          <LoadingBar style={{ backgroundColor: "purple", height: "3px" }} />
           <Header />
+
           <Switch>
-            <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/" component={Questions} logedin={this.props.logedin}/>
-            <PrivateRoute exact path="/questions/:question_id" component={Question} logedin={this.props.logedin}/>
-            <PrivateRoute exact path="/leaderboard" component={Leaderboard} logedin={this.props.logedin}/>
-            <PrivateRoute exact path="/add" component={Add} logedin={this.props.logedin}/>
+            <Route path="/login" component={Login} />
+            <PrivateRoute exact path="/" component={Questions} />
+            <PrivateRoute exact path="/questions/:question_id" component={Question} />
+            <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
+            <PrivateRoute exact path="/add" component={Add} />
             <Route component={Logout} />
             <Route component={NotFound} />
           </Switch>
+
         </Fragment>
       </Router>;
   }
@@ -42,21 +51,25 @@ class App extends Component {
 
 
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, authedUser, ...rest }) => 
+
+  (
 
   <Route {...rest} render={(props) => (
-    props.logedin !== null
+    authedUser !== null
       ? <Component {...props} />
       : <Redirect to='/login' />
   )} />
-
+  
   
 )
+
+connect(mapStateToProps)(PrivateRoute);
 
 
 function mapStateToProps ({ authedUser }) {
   return {
-    logedin: authedUser
+    authedUser
   }
 }
 

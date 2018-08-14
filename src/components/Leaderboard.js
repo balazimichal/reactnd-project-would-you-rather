@@ -6,21 +6,7 @@ class Leaderboard extends Component {
   render() {
 
 
-    let sortedUser = Object.keys(this.props.users)
-      .map(username => {
-        return { ...this.props.users[username], 
-        score: Object.keys(this.props.users[username].answers).length + this.props.users[username].questions.length, 
-        A: Object.keys(this.props.users[username].answers).length, 
-        Q: this.props.users[username].questions.length };
-      })
-      .sort(function(a, b) {
-        if (a.score > b.score) {
-          return -1;
-        } else if (a.score < b.score) {
-          return 1;
-        }
-        return 0;
-      });
+
 
     return <section>
         <div className="wrapper">
@@ -31,19 +17,7 @@ class Leaderboard extends Component {
         ))}
 
 
-        {
-          sortedUser.map(obj => (
-            <div>
-              {obj.id}
-              {obj.name}
-              {obj.A}
-              {obj.Q}
-              {obj.score}
-              {obj.avatarURL}
-            
-            </div>
-          ))
-        }
+
 
         </div>
       </section>;
@@ -60,7 +34,38 @@ function mapStateToProps({ users }) {
 export default connect(mapStateToProps)(Leaderboard);
 
 
+/*
+POSSIBLE SOLUTION NO2
+
+let orderedUsers = Object.keys(this.props.users)
+  .map(user => {
+    return {
+      ...this.props.users[user],
+      score: Object.keys(this.props.users[user].answers).length + this.props.users[user].questions.length,
+      answer: Object.keys(this.props.users[user].answers).length,
+      question: this.props.users[user].questions.length
+    };
+  })
+  .sort(function (a, b) {
+    if (a.score > b.score) {
+      return -1;
+    } else if (a.score < b.score) {
+      return 1;
+    }
+    return 0;
+  });
 
 
-
-
+{
+  orderedUsers.map(user => (
+    <div>
+      {user.id}
+      {user.name}
+      {user.answer}
+      {user.question}
+      {user.score}
+      {user.avatarURL}
+    </div>
+  ))
+}
+*/
