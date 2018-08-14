@@ -30,7 +30,7 @@ class Question extends Component {
                   <div>
                     <input type="radio" name="options"  /> {questionTwo}
                   </div>
-                  <button>Submit</button>
+                  <button disabled>Submit</button>
                 </form>
               </div>
             </div>
