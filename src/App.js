@@ -51,14 +51,22 @@ class App extends Component {
 
 
 
-const PrivateRoute = ({ component: Component, authedUser, ...rest }) => 
-(
-  <Route {...rest} render={(props) => (
-    authedUser !== null
-      ? <Component {...props} />
-      : <Redirect to='/login' />
-  )} /> 
-)
+const PrivateRoute = connect(mapStateToProps)(
+  ({ component: Component, authedUser, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        authedUser !== null ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
+  )
+);
+
+
 
 function mapStateToProps ({ authedUser }) {
   return {
@@ -66,7 +74,7 @@ function mapStateToProps ({ authedUser }) {
   }
 }
 
-connect(mapStateToProps)(PrivateRoute);
+
 
 export default connect(mapStateToProps)(App);
 
