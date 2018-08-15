@@ -115,6 +115,7 @@ section{
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 20px;
+    position:relative;
 }
 
 .box:after{
@@ -323,3 +324,18 @@ label{
     display:block
 }
 
+.choice{
+    width:100px;
+    height:100px;
+    display:block;
+    position:absolute;
+    top:-30px;
+    right:-30px;
+    background: #c1bb81;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    text-align:center;
+    line-height:100px;
+}

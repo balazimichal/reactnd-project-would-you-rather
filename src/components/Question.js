@@ -68,6 +68,10 @@ class Question extends Component {
                   <div className="box">
                     <div className="box-content">
                       <h3>{questionOne}</h3>
+                    {questionOneVote.indexOf(authedUser) !== -1
+                      ? <span className='choice'>Your choice</span>
+                      : false
+                    }
                       <div className='progressbar-wapper'>
                       <div className='progressbar' style={{ width: `${questionOneVotePercent}%`}}>
                           <span className='progressbar-value'>{questionOneVotePercent} %</span>
@@ -79,6 +83,10 @@ class Question extends Component {
                   <div className="box">
                     <div className="box-content">
                       <h3>{questionTwo}</h3>
+                      {questionTwoVote.indexOf(authedUser) !== -1 
+                        ? <span className='choice'>Your choice</span>
+                        : false
+                      }
                       <div className='progressbar-wapper'>
                       <div className='progressbar' style={{ width: `${questionTwoVotePercent}%` }}>
                           <span className='progressbar-value'>{questionTwoVotePercent} %</span>

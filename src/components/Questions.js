@@ -21,7 +21,7 @@ class Questions extends Component {
         .map((question) => {
             return {
                 ...questions[question],
-                optionOneAnswered: questions[question].optionOne.votes.indexOf(authedUser) === -1 ? false : true, // Object.keys(users[user].answers).length + users[user].questions.length,
+                optionOneAnswered: questions[question].optionOne.votes.indexOf(authedUser) === -1 ? false : true,
                 optionTwoAnswered: questions[question].optionTwo.votes.indexOf(authedUser) === -1 ? false : true, 
             }
         }).sort((a, b, ) => b.timestamp - a.timestamp)
@@ -31,8 +31,8 @@ class Questions extends Component {
         return <section>
             <div className="wrapper">
             <nav className='questions-navigation'>
-                <span onClick={() => this.handleTabChange('unanswered')} className={`tab-nav ${this.state.activeTab === 'unanswered' ? 'active' : ''}`}>Unanswered</span>
-                <span onClick={() => this.handleTabChange('answered')} className={`tab-nav ${this.state.activeTab === 'answered' ? 'active' : ''}`}>Answered</span>
+                <span onClick={() => this.handleTabChange('unanswered')} className={`tab-nav ${this.state.activeTab === 'unanswered' ? 'active' : ''}`}>Unanswered Questions</span>
+                <span onClick={() => this.handleTabChange('answered')} className={`tab-nav ${this.state.activeTab === 'answered' ? 'active' : ''}`}>Answered Questions</span>
             </nav>
                 <div className={`unanswered tab ${this.state.activeTab === 'unanswered' ? 'active' : ''}`}>
               {orderedQuestions.map(question => {
