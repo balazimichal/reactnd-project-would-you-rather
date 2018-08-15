@@ -42,10 +42,10 @@ class Question extends Component {
 
     const totalVoteNum = question.optionOne.votes.length + question.optionTwo.votes.length;
     if (questionOneVoteNum > 0) {
-      questionOneVotePercent = Math.round((totalVoteNum / questionOneVoteNum) * 100)
+      questionOneVotePercent = (questionOneVoteNum / totalVoteNum) * 100
     } 
     if (questionTwoVoteNum > 0) {
-      questionTwoVotePercent = Math.round((totalVoteNum / questionTwoVoteNum) * 100)
+      questionTwoVotePercent = (questionTwoVoteNum / totalVoteNum) * 100
     }
     
 
