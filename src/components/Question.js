@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleAnswerQuestion } from '../actions/users'
+import { handleAnswerQuestion } from '../actions/shared'
 
 class Question extends Component {
 
@@ -20,13 +20,8 @@ class Question extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-
     const { option } = this.state
     const { dispatch } = this.props
-
-    console.log('question id: ', this.props.match.params.question_id);
-    console.log('option: ', option)
-
     dispatch(handleAnswerQuestion(this.props.match.params.question_id, option));
   }
 
@@ -38,6 +33,67 @@ class Question extends Component {
     const user = users[question.author]
     const userName = user.name
     const userAvatar = user.avatarURL
+    const questionOneVote = question.optionOne.votes
+    const questionTwoVote = question.optionTwo.votes
+    const questionOneVoteNum = question.optionOne.votes.length
+    const questionTwoVoteNum = question.optionTwo.votes.length
+    let questionOneVotePercent = 0
+    let questionTwoVotePercent = 0
+
+    const totalVoteNum = question.optionOne.votes.length + question.optionTwo.votes.length;
+    if (questionOneVoteNum > 0) {
+      questionOneVotePercent = Math.round((totalVoteNum / questionOneVoteNum) * 100)
+    } 
+    if (questionTwoVoteNum > 0) {
+      questionTwoVotePercent = Math.round((totalVoteNum / questionTwoVoteNum) * 100)
+    }
+    
+
+
+
+    
+    if (questionOneVote.indexOf(authedUser) !== -1 || questionTwoVote.indexOf(authedUser) !== -1) {
+      return <section>
+          <div className="wrapper">
+            <div className="box">
+              <div className="box-header">
+                <h4>{userName} asks:</h4>
+              </div>
+              <div className="box-content">
+                <div className="box-left">
+                  <img src={userAvatar} alt="" className="avatar" />
+                </div>
+                <div className="box-right">
+                  <h1>Results</h1>
+                  <div className="box">
+                    <div className="box-content">
+                      <h3>{questionOne}</h3>
+                      <div className='progressbar-wapper'>
+                      <div className='progressbar' style={{ width: `${questionOneVotePercent}%`}}>
+                          <span className='progressbar-value'>{questionOneVotePercent} %</span>
+                        </div>
+                      </div>
+                      {questionOneVoteNum} out of {totalVoteNum} {totalVoteNum > 1 ? "votes" : "vote"}
+                    </div>
+                  </div>
+                  <div className="box">
+                    <div className="box-content">
+                      <h3>{questionTwo}</h3>
+                      <div className='progressbar-wapper'>
+                      <div className='progressbar' style={{ width: `${questionTwoVotePercent}%` }}>
+                          <span className='progressbar-value'>{questionTwoVotePercent} %</span>
+                        </div>
+                      </div>
+                      {questionTwoVoteNum} out of {totalVoteNum} {totalVoteNum > 1 ? "votes" : "vote"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>;
+    }
+    
 
     return <section>
         <div className="wrapper">

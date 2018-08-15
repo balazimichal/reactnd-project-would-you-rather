@@ -16,16 +16,13 @@ export default function users (state = {}, action) {
                 }
             }
         case ANSWER_QUESTION :
-            let authedUser = action.data.authedUser
-            let qid = action.data.qid
-            let answer = action.data.answer
             return {
                 ...state,
-                [authedUser]: {
-                    ...state[authedUser],
+                [action.authedUser]: {
+                    ...state[action.authedUser],
                     answers: {
-                        ...state[authedUser].answers,
-                        [qid]: answer
+                        ...state[action.authedUser].answers,
+                        [action.questionID]: action.option
                     }
                 }
             }

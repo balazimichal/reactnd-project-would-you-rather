@@ -268,3 +268,25 @@ hr{
 label{
     display:block;
 }
+
+.progressbar-wapper{
+    border: 1px solid purple;
+    height: 20px;
+    text-align:center;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom:10px;
+    overflow:hidden;
+    position:relative;
+}
+
+.progressbar{
+    background: #ccc;
+    height:20px;
+    width:0;
+}
+
+.progressbar-value{
+    position:absolute;
+    left:50%
+}
