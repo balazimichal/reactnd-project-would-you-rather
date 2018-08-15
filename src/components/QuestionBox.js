@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom";
 
-class QuestionDashboard extends Component {
+class QuestionBox extends Component {
 
 
 
@@ -54,4 +54,4 @@ function mapStateToProps({ questions, users }, {id}) {
             }
 
         }
-export default withRouter(connect(mapStateToProps)(QuestionDashboard))
+export default withRouter(connect(mapStateToProps)(QuestionBox))

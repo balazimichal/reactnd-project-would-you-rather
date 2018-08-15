@@ -5,15 +5,13 @@ import LeaderboardBox from './LeaderboardBox'
 class Leaderboard extends Component {
   render() {
     const { users } = this.props
-    let orderedLeaderboard = Object.keys(this.props.users)
+    let orderedLeaderboard = Object.keys(users)
       .map((user) => {
         return {
           ...users[user],
           score: Object.keys(users[user].answers).length + users[user].questions.length,
         }
       }).sort((a, b, ) => b.score - a.score)
-
-    console.log(orderedLeaderboard)
 
 
     return <section>
