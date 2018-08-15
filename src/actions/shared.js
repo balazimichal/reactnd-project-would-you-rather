@@ -1,6 +1,6 @@
 import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { receiveUsers, addUserQuestion, answerQuestion } from './users'
-import { receiveQuestions, addQuestion } from './questions'
+import { receiveQuestions, addQuestion, addQuestionAnswer } from "./questions";
 import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
@@ -56,6 +56,7 @@ export function handleAnswerQuestion(questionID, option) {
         
             .then(() => {
                 dispatch(answerQuestion(authedUser, questionID, option))
+                dispatch(addQuestionAnswer(authedUser, questionID, option));
                 dispatch(hideLoading())
             })
         
