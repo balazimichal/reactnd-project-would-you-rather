@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setAuthedUser } from "../actions/authedUser";
-import { Redirect } from "react-router-dom";
+import { setAuthedUser } from '../actions/authedUser'
+import { withRouter } from 'react-router-dom'
 
 class Login extends Component {
 
   state = {
     user : 'none',
-    redirectHome : false
   }
 
   changeUser = (e) => {
@@ -18,7 +17,7 @@ class Login extends Component {
   handleLogin = (e) => {
     e.preventDefault()
     this.props.dispatch(setAuthedUser(this.state.user))
-    this.setState(() => ({ redirectHome : true }));
+    this.props.history.push("/");
   }
 
   render() {
@@ -26,9 +25,6 @@ class Login extends Component {
 
 
 
-    if (this.state.redirectHome === true) {
-      return <Redirect to='/' />
-    }
 
     return <section>
         <div className="wrapper">
@@ -63,4 +59,4 @@ function mapStateToProps({ users }) {
 }
 
 
-export default connect(mapStateToProps)(Login)
+export default withRouter(connect(mapStateToProps)(Login))

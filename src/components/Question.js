@@ -1,7 +1,35 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { handleAnswerQuestion } from '../actions/users'
 
 class Question extends Component {
+
+  state = {
+    option: '',
+    submit: true,
+  }
+
+  handleSelection = (option) => {
+    
+    this.setState(() => ({
+      option,
+      submit: false,
+    }))
+    
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    const { option } = this.state
+    const { dispatch } = this.props
+
+    console.log('question id: ', this.props.match.params.question_id);
+    console.log('option: ', option)
+
+    dispatch(handleAnswerQuestion(this.props.match.params.question_id, option));
+  }
+
   render() {
     const { authedUser, questions, users} = this.props
     const question = questions[this.props.match.params.question_id]
@@ -23,14 +51,14 @@ class Question extends Component {
               </div>
               <div className="box-right">
                 <h1>Would You Rather ...</h1>
-                <form>
-                  <div>
-                    <input type="radio" name="option" /> {questionOne}
-                  </div>
-                  <div>
-                    <input type="radio" name="options"  /> {questionTwo}
-                  </div>
-                  <button disabled>Submit</button>
+                <form onSubmit={this.handleSubmit}>
+                  <label>
+                    <input type="radio" name="options" onChange={() => this.handleSelection('optionOne')} checked={this.state.option === "optionOne"} /> {questionOne}
+                  </label>
+                  <label>
+                  <input type="radio" name="options" onChange={() => this.handleSelection('optionTwo')} checked={this.state.option === "optionTwo"} /> {questionTwo}
+                  </label>
+                  <button disabled={this.state.submit}>Submit</button>
                 </form>
               </div>
             </div>
