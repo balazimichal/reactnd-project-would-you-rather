@@ -4,21 +4,25 @@ import LeaderboardBox from './LeaderboardBox'
 
 class Leaderboard extends Component {
   render() {
+    const { users } = this.props
+    let orderedLeaderboard = Object.keys(this.props.users)
+      .map((user) => {
+        return {
+          ...users[user],
+          score: Object.keys(users[user].answers).length + users[user].questions.length,
+        }
+      }).sort((a, b, ) => b.score - a.score)
 
-
+    console.log(orderedLeaderboard)
 
 
     return <section>
         <div className="wrapper">
-        {this.props.userIds.map((id) => (
-          <div key={id}>
-            <LeaderboardBox id={id} />
+        {orderedLeaderboard.map((user) => (
+          <div key={user.id}>
+            <LeaderboardBox id={user.id} />
           </div>
         ))}
-
-
-
-
         </div>
       </section>;
   }
@@ -26,46 +30,8 @@ class Leaderboard extends Component {
 
 function mapStateToProps({ users }) {
   return {  
-    userIds: Object.keys(users),
-    users,
+    users
   }
 }
 
 export default connect(mapStateToProps)(Leaderboard);
-
-
-/*
-POSSIBLE SOLUTION NO2
-
-let orderedUsers = Object.keys(this.props.users)
-  .map(user => {
-    return {
-      ...this.props.users[user],
-      score: Object.keys(this.props.users[user].answers).length + this.props.users[user].questions.length,
-      answer: Object.keys(this.props.users[user].answers).length,
-      question: this.props.users[user].questions.length
-    };
-  })
-  .sort(function (a, b) {
-    if (a.score > b.score) {
-      return -1;
-    } else if (a.score < b.score) {
-      return 1;
-    }
-    return 0;
-  });
-
-
-{
-  orderedUsers.map(user => (
-    <div>
-      {user.id}
-      {user.name}
-      {user.answer}
-      {user.question}
-      {user.score}
-      {user.avatarURL}
-    </div>
-  ))
-}
-*/
