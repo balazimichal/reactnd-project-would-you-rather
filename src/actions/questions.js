@@ -16,11 +16,12 @@ export function addQuestion(question) {
     }
 }
 
-export function addQuestionAnswer(authedUser, questionID) {
+export function addQuestionAnswer(authedUser, questionID, option) {
     return {
         type: ADD_QUESTION_ANSWER,
         authedUser,
-        questionID
+        questionID,
+        option
     }
 }
 

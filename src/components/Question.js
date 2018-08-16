@@ -24,7 +24,7 @@ class Question extends Component {
     const { option } = this.state
     const { dispatch } = this.props
     dispatch(handleAnswerQuestion(this.props.match.params.question_id, option))
-    this.props.history.push('/')
+    this.props.history.push(`/questions/${this.props.match.params.question_id}`);
   }
 
   render() {

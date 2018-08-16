@@ -56,7 +56,7 @@ export function handleAnswerQuestion(questionID, option) {
         
             .then(() => {
                 dispatch(answerQuestion(authedUser, questionID, option))
-                //dispatch(addQuestionAnswer(authedUser, questionID, option));
+                dispatch(addQuestionAnswer(authedUser, questionID, option));
                 dispatch(hideLoading())
             })
         
