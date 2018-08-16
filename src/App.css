@@ -63,9 +63,8 @@ section p{
     line-height:30px;
 }
 
-.header .mian-nav{
+.header nav.main-nav{
     float:left;
-
 }
 
 .header nav a:hover{
