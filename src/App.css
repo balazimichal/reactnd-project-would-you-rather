@@ -60,14 +60,16 @@ section p{
     padding: 5px 0px;
     text-decoration: none;
     text-transform: uppercase;
+    line-height:30px;
+}
+
+.header .mian-nav{
+    float:left;
+
 }
 
 .header nav a:hover{
     color: purple;
-}
-
-.header .main-nav a{
-    float: left;
 }
 
 .header .login-nav{
@@ -338,4 +340,73 @@ label{
     border-radius: 50%;
     text-align:center;
     line-height:100px;
+}
+
+
+
+@media only screen and (max-width: 760px) {
+
+    .header .mian-nav{
+        float:none;
+    }
+
+    .avatar{
+        width:75px;
+        height: 75px;
+    }
+
+    .box-left{
+        width: 70px;
+    }
+
+    .box-third{
+        width: calc(30% - 70px);
+    }
+
+    .tab-nav{
+        font-size: 14px
+    }
+
+    .header .login-nav{
+        display: block;
+        float:none;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .header .login-nav a{
+        margin-left:0
+    }
+
+    .header .login-nav img{
+        position: relative;
+        left:0;
+        top: 10px;
+        margin:0 10px 0 0
+    }
+
+    button{
+        font-size: 12px;
+        height:32px;
+        line-height:32px;
+        padding:0;
+    }
+
+    h1{
+        font-size:24px;
+        line-height: 32px;
+    }
+
+    .box-right{
+        width: calc(100% - 150px)
+    }
+
+    .choice{
+        top: -50px;
+        right: -50px;
+    }
+
+    .progressbar-value{
+        left: 0
+    }
 }

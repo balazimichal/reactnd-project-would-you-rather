@@ -37,11 +37,12 @@ class Questions extends Component {
                 <div className={`unanswered tab ${this.state.activeTab === 'unanswered' ? 'active' : ''}`}>
               {orderedQuestions.map(question => {
 
-                    if (question.optionOneAnswered !== true && question.optionTwoAnswered !== true)
-
-                    return <div className="box" key={question.id}>
+                    if (question.optionOneAnswered !== true && question.optionTwoAnswered !== true) 
+                        return <div className="box" key={question.id}>
                             <QuestionBox id={question.id} />
                         </div>
+                    
+
 
               }
                 
