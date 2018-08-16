@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/shared'
 
 class Question extends Component {
@@ -22,7 +23,8 @@ class Question extends Component {
     e.preventDefault()
     const { option } = this.state
     const { dispatch } = this.props
-    dispatch(handleAnswerQuestion(this.props.match.params.question_id, option));
+    dispatch(handleAnswerQuestion(this.props.match.params.question_id, option))
+    this.props.history.push('/')
   }
 
   render() {
@@ -140,4 +142,4 @@ function mapStateToProps({ questions, users, authedUser }) {
   }
 }
 
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));
