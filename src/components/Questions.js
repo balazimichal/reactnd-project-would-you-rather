@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionBox from './QuestionBox'
+import PropTypes from 'prop-types'
 
 class Questions extends Component {
 
@@ -63,6 +64,12 @@ class Questions extends Component {
           </section>;
     }
 }
+
+
+Questions.propTypes = {
+    questions: PropTypes.object.isRequired,
+    authedUser: PropTypes.string.isRequired,
+};
 
 function mapStateToProps({ questions, authedUser }) {
   return {
