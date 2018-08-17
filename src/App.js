@@ -59,7 +59,7 @@ const PrivateRoute = connect(mapStateToProps)(
         authedUser !== null ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Redirect push to="/login" />
         )
       }
     />
