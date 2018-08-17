@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/shared'
 import PropTypes from "prop-types";
 
@@ -39,20 +39,11 @@ class Question extends Component {
   render() {
     const { authedUser, questions, users} = this.props
     const question = questions[this.props.match.params.question_id]
+    if (!question) { 
+      return <Redirect to="/404" />
+    }
     const totalVoteNum = question.optionOne.votes.length + question.optionTwo.votes.length;
 
-    /*
-    let questionOneVotePercent = 0
-    let questionTwoVotePercent = 0
-
-    
-    if (question.optionOne.votes.length > 0) {
-      questionOneVotePercent = Math.round((question.optionOne.votes.length / totalVoteNum) * 100);
-    } 
-    if (question.optionTwo.votes.length > 0) {
-      questionTwoVotePercent = Math.round((question.optionTwo.votes.length / totalVoteNum) * 100);
-    }
-    */
     const questionOneVotePercent = this.getPercent(question.optionOne.votes.length, totalVoteNum);
     const questionTwoVotePercent = this.getPercent(question.optionTwo.votes.length, totalVoteNum);
 
@@ -137,6 +128,7 @@ class Question extends Component {
           </div>
         </div>
       </section>;
+
   }
 }
 
