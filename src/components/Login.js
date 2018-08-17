@@ -10,12 +10,13 @@ class Login extends Component {
   };
 
   
-
+/*
   componentDidMount() {
     console.log(this.props.history.length)
     console.log(this.props.history.entries);
     console.log(this.props.history.location.pathname);    
   }
+*/
 
   changeUser = e => {
     const user = e.target.value;

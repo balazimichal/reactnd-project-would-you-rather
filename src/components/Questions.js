@@ -17,7 +17,8 @@ class Questions extends Component {
     render() {
 
     const { questions, authedUser } = this.props
-    let orderedQuestions = Object.keys(questions)
+    let orderedQuestions = ''
+    orderedQuestions = Object.keys(questions)
         .map((question) => {
             return {
                 ...questions[question],
@@ -33,9 +34,9 @@ class Questions extends Component {
                 <span onClick={() => this.handleTabChange('answered')} className={`tab-nav ${this.state.activeTab === 'answered' ? 'active' : ''}`}>Answered Questions</span>
             </nav>
                 <div className={`unanswered tab ${this.state.activeTab === 'unanswered' ? 'active' : ''}`}>
-              {orderedQuestions.map(question => {
+                    {orderedQuestions.filter(question => question.optionOneAnswered !== true && question.optionTwoAnswered !== true).map(question => {
 
-                    if (question.optionOneAnswered !== true && question.optionTwoAnswered !== true) 
+         
                         return <div className="box" key={question.id}>
                             <QuestionBox id={question.id} />
                         </div>
@@ -48,9 +49,7 @@ class Questions extends Component {
               </div>
 
                 <div className={`answered tab ${this.state.activeTab === 'answered' ? 'active' : ''}`}>
-                {orderedQuestions.map(question => {
-
-                    if (question.optionOneAnswered === true || question.optionTwoAnswered === true)
+                    {orderedQuestions.filter(question => question.optionOneAnswered === true && question.optionTwoAnswered === true).map(question => {
 
                         return <div className="box" key={question.id}>
                         <QuestionBox id={question.id} />
