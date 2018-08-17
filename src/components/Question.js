@@ -27,74 +27,79 @@ class Question extends Component {
     this.props.history.push(`/questions/${this.props.match.params.question_id}`);
   }
 
+  getPercent = (numberVotes, totalVotes) => {
+      let percent = 0
+      if(numberVotes > 0) {
+        percent = Math.round((numberVotes / totalVotes) * 100)
+      }
+      return percent
+  }
+
   render() {
     const { authedUser, questions, users} = this.props
     const question = questions[this.props.match.params.question_id]
-    const questionOne = question.optionOne.text
-    const questionTwo = question.optionTwo.text
-    const user = users[question.author]
-    const userName = user.name
-    const userAvatar = user.avatarURL
-    const questionOneVote = question.optionOne.votes
-    const questionTwoVote = question.optionTwo.votes
-    const questionOneVoteNum = question.optionOne.votes.length
-    const questionTwoVoteNum = question.optionTwo.votes.length
+    const totalVoteNum = question.optionOne.votes.length + question.optionTwo.votes.length;
+
+    /*
     let questionOneVotePercent = 0
     let questionTwoVotePercent = 0
 
-    const totalVoteNum = question.optionOne.votes.length + question.optionTwo.votes.length;
-    if (questionOneVoteNum > 0) {
-      questionOneVotePercent = Math.round((questionOneVoteNum / totalVoteNum) * 100)
+    
+    if (question.optionOne.votes.length > 0) {
+      questionOneVotePercent = Math.round((question.optionOne.votes.length / totalVoteNum) * 100);
     } 
-    if (questionTwoVoteNum > 0) {
-      questionTwoVotePercent = Math.round((questionTwoVoteNum / totalVoteNum) * 100)
+    if (question.optionTwo.votes.length > 0) {
+      questionTwoVotePercent = Math.round((question.optionTwo.votes.length / totalVoteNum) * 100);
     }
+    */
+    const questionOneVotePercent = this.getPercent(question.optionOne.votes.length, totalVoteNum);
+    const questionTwoVotePercent = this.getPercent(question.optionTwo.votes.length, totalVoteNum);
+
+
     
-
-
-
-    
-    if (questionOneVote.indexOf(authedUser) !== -1 || questionTwoVote.indexOf(authedUser) !== -1) {
+    if (question.optionOne.votes.indexOf(authedUser) !== -1 || question.optionTwo.votes.indexOf(authedUser) !== -1) {
       return <section>
           <div className="wrapper">
             <div className="box">
               <div className="box-header">
-                <h4>{userName} asks:</h4>
+                <h4>{users[question.author].name} asks:</h4>
               </div>
               <div className="box-content">
                 <div className="box-left">
-                  <img src={userAvatar} alt="" className="avatar" />
+                <img src={users[question.author].avatarURL} alt="" className="avatar" />
                 </div>
                 <div className="box-right">
                   <h1>Results</h1>
                   <div className="box">
                     <div className="box-content">
-                      <h3>{questionOne}</h3>
-                    {questionOneVote.indexOf(authedUser) !== -1
-                      ? <span className='choice'>Your choice</span>
-                      : false
-                    }
-                      <div className='progressbar-wapper'>
-                      <div className='progressbar' style={{ width: `${questionOneVotePercent}%`}}>
-                          <span className='progressbar-value'>{questionOneVotePercent} %</span>
+                      <h3>{question.optionOne.text}</h3>
+                      {question.optionOne.votes.indexOf(authedUser) !== -1 ? <span className="choice">
+                          Your choice
+                        </span> : false}
+                      <div className="progressbar-wapper">
+                        <div className="progressbar" style={{ width: `${questionOneVotePercent}%` }}>
+                          <span className="progressbar-value">
+                            {questionOneVotePercent} %
+                          </span>
                         </div>
                       </div>
-                      {questionOneVoteNum} out of {totalVoteNum} {totalVoteNum > 1 ? "votes" : "vote"}
+                    {question.optionOne.votes.length} out of {totalVoteNum} {totalVoteNum > 1 ? "votes" : "vote"}
                     </div>
                   </div>
                   <div className="box">
                     <div className="box-content">
-                      <h3>{questionTwo}</h3>
-                      {questionTwoVote.indexOf(authedUser) !== -1 
-                        ? <span className='choice'>Your choice</span>
-                        : false
-                      }
-                      <div className='progressbar-wapper'>
-                      <div className='progressbar' style={{ width: `${questionTwoVotePercent}%` }}>
-                          <span className='progressbar-value'>{questionTwoVotePercent} %</span>
+                      <h3>{question.optionTwo.text}</h3>
+                      {question.optionTwo.votes.indexOf(authedUser) !== -1 ? <span className="choice">
+                          Your choice
+                        </span> : false}
+                      <div className="progressbar-wapper">
+                        <div className="progressbar" style={{ width: `${questionTwoVotePercent}%` }}>
+                          <span className="progressbar-value">
+                            {questionTwoVotePercent} %
+                          </span>
                         </div>
                       </div>
-                      {questionTwoVoteNum} out of {totalVoteNum} {totalVoteNum > 1 ? "votes" : "vote"}
+                    {question.optionTwo.votes.length} out of {totalVoteNum} {totalVoteNum > 1 ? "votes" : "vote"}
                     </div>
                   </div>
                 </div>
@@ -109,20 +114,20 @@ class Question extends Component {
         <div className="wrapper">
           <div className="box">
             <div className="box-header">
-              <h4>{userName} asks:</h4>
+              <h4>{users[question.author].name} asks:</h4>
             </div>
             <div className="box-content">
               <div className="box-left">
-                <img src={userAvatar} alt="" className="avatar" />
+                <img src={users[question.author].avatarURL} alt="" className="avatar" />
               </div>
               <div className="box-right">
                 <h1>Would You Rather ...</h1>
                 <form onSubmit={this.handleSubmit}>
                   <label>
-                    <input type="radio" name="options" onChange={() => this.handleSelection('optionOne')} checked={this.state.option === "optionOne"} /> {questionOne}
+                    <input type="radio" name="options" onChange={() => this.handleSelection("optionOne")} checked={this.state.option === "optionOne"} /> {question.optionOne.text}
                   </label>
                   <label>
-                  <input type="radio" name="options" onChange={() => this.handleSelection('optionTwo')} checked={this.state.option === "optionTwo"} /> {questionTwo}
+                    <input type="radio" name="options" onChange={() => this.handleSelection("optionTwo")} checked={this.state.option === "optionTwo"} /> {question.optionTwo.text}
                   </label>
                   <button disabled={this.state.submit}>Submit</button>
                 </form>
