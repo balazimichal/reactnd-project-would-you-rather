@@ -19,17 +19,13 @@ class App extends Component {
 
 
 
-
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData());
   }
 
   render() {
-
-
-
-
-    return <Router>
+    return (
+      <Router>
         <Fragment>
           <LoadingBar style={{ backgroundColor: "purple", height: "3px" }} />
           <Header />
@@ -37,15 +33,19 @@ class App extends Component {
           <Switch>
             <Route path="/login" component={Login} />
             <PrivateRoute exact path="/" component={Questions} />
-            <PrivateRoute exact path="/questions/:question_id" component={Question} />
+            <PrivateRoute
+              exact
+              path="/questions/:question_id"
+              component={Question}
+            />
             <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
             <PrivateRoute exact path="/add" component={Add} />
             <Route component={Logout} />
             <Route component={NotFound} />
           </Switch>
-
         </Fragment>
-      </Router>;
+      </Router>
+    );
   }
 }
 

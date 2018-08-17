@@ -26,8 +26,6 @@ class Questions extends Component {
             }
         }).sort((a, b, ) => b.timestamp - a.timestamp)
 
-    console.log('--------- XXX -------', orderedQuestions)
-
         return <section>
             <div className="wrapper">
             <nav className='questions-navigation'>
@@ -75,32 +73,3 @@ function mapStateToProps({ questions, authedUser }) {
 }
 
 export default connect(mapStateToProps)(Questions)
-
-
-
-
-
-
-/*
-class Questions extends Component {
-  render() {
-      return <section>
-          <div className="wrapper">
-              {this.props.questionIds.map((id) => (
-                  <div className="box" key={id}>
-                      <QuestionDashbaord id={id} />
-                  </div>
-              ))}
-          </div>
-      </section>;
-  }
-}
-
-function mapStateToProps({ questions }) {
-    return {
-        questionIds: Object.keys(questions)
-    }
-}
-
-export default connect(mapStateToProps)(Questions)
-*/

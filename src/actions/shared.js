@@ -45,9 +45,6 @@ export function handleAnswerQuestion(questionID, option) {
 
         dispatch(showLoading())
 
-        console.log(authedUser, questionID, option)
-
-        
         return saveQuestionAnswer({
             authedUser,
             qid: questionID,
