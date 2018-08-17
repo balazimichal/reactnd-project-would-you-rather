@@ -15,7 +15,10 @@ export function handleInitialData () {
             dispatch(receiveUsers(users))
             dispatch(setAuthedUser(AUTHED_ID))
             dispatch(hideLoading())
-        })
+            })
+            .catch(function (error) {
+                alert('There was an error loading initial data: ', error);
+            })
     }
 }
 
@@ -26,15 +29,18 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
         dispatch(showLoading())
 
         return saveQuestion({
-            optionOneText,
-            optionTwoText,
-            author: authedUser
+          optionOneText,
+          optionTwoText,
+          author: authedUser
         })
-            .then((question) => {
-                dispatch(addQuestion(question))
-                dispatch(addUserQuestion(authedUser, question.id))
-                dispatch(hideLoading())
-            })
+          .then(question => {
+            dispatch(addQuestion(question));
+            dispatch(addUserQuestion(authedUser, question.id));
+            dispatch(hideLoading());
+          })
+          .catch(function(error) {
+            alert('There was an error adding new question:', error);
+          });
     }
 }
 
@@ -46,16 +52,18 @@ export function handleAnswerQuestion(questionID, option) {
         dispatch(showLoading())
 
         return saveQuestionAnswer({
-            authedUser,
-            qid: questionID,
-            answer: option,
+          authedUser,
+          qid: questionID,
+          answer: option
         })
-        
-            .then(() => {
-                dispatch(answerQuestion(authedUser, questionID, option))
-                dispatch(addQuestionAnswer(authedUser, questionID, option));
-                dispatch(hideLoading())
-            })
+        .then(() => {
+            dispatch(answerQuestion(authedUser, questionID, option));
+            dispatch(addQuestionAnswer(authedUser, questionID, option));
+            dispatch(hideLoading());
+        })
+        .catch(function(error) {
+            alert("There was an error answering a question: ", error);
+        });
         
     }
 }
