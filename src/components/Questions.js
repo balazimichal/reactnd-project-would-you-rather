@@ -17,16 +17,7 @@ class Questions extends Component {
 
     render() {
 
-    const { questions, authedUser } = this.props
-    let orderedQuestions = ''
-    orderedQuestions = Object.keys(questions)
-        .map((question) => {
-            return {
-                ...questions[question],
-                optionOneAnswered: questions[question].optionOne.votes.indexOf(authedUser) === -1 ? false : true,
-                optionTwoAnswered: questions[question].optionTwo.votes.indexOf(authedUser) === -1 ? false : true, 
-            }
-        }).sort((a, b, ) => b.timestamp - a.timestamp)
+    const { orderedQuestions } = this.props
 
         return <section>
             <div className="wrapper">
@@ -50,7 +41,7 @@ class Questions extends Component {
               </div>
 
                 <div className={`answered tab ${this.state.activeTab === 'answered' ? 'active' : ''}`}>
-                    {orderedQuestions.filter(question => question.optionOneAnswered === true && question.optionTwoAnswered === true).map(question => {
+                    {orderedQuestions.filter(question => question.optionOneAnswered === true || question.optionTwoAnswered === true).map(question => {
 
                         return <div className="box" key={question.id}>
                         <QuestionBox id={question.id} />
@@ -67,15 +58,20 @@ class Questions extends Component {
 
 
 Questions.propTypes = {
-    questions: PropTypes.object.isRequired,
-    authedUser: PropTypes.string.isRequired,
+    orderedQuestions: PropTypes.array.isRequired,
 };
 
 function mapStateToProps({ questions, authedUser }) {
   return {
-    questions,
-    authedUser
-  };
+    orderedQuestions: Object.keys(questions)
+            .map((question) => {
+                return {
+                    ...questions[question],
+                    optionOneAnswered: questions[question].optionOne.votes.indexOf(authedUser) === -1 ? false : true,
+                    optionTwoAnswered: questions[question].optionTwo.votes.indexOf(authedUser) === -1 ? false : true,
+                }
+            }).sort((a, b, ) => b.timestamp - a.timestamp)
+  }
 }
 
 export default connect(mapStateToProps)(Questions)
