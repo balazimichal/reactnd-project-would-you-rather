@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LeaderboardBox from './LeaderboardBox'
+import PropTypes from "prop-types";
 
 class Leaderboard extends Component {
   render() {
@@ -25,6 +26,11 @@ class Leaderboard extends Component {
       </section>;
   }
 }
+
+
+Leaderboard.propTypes = {
+  users: PropTypes.object.isRequired,
+};
 
 function mapStateToProps({ users }) {
   return {  

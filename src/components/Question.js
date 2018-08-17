@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/shared'
+import PropTypes from "prop-types";
 
 class Question extends Component {
 
@@ -138,6 +139,12 @@ class Question extends Component {
       </section>;
   }
 }
+
+Question.propTypes = {
+  questions: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
+  authedUser: PropTypes.string.isRequired,
+};
 
 function mapStateToProps({ questions, users, authedUser }) {
   return {
