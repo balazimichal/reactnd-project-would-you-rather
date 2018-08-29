@@ -1,55 +1,37 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+const Header = ({ authedUser, users }) => (
+  <header className="header">
+    <div className="wrapper">
+      <nav className="main-nav">
+        <Link to="/">Home</Link>
+        <Link to="/add">New Question</Link>
+        <Link to="/leaderboard">Leaderboard</Link>
+      </nav>
 
-class Header extends Component {
-
-  render() {
-
-    const {authedUser, users} = this.props
-
-    let button
-
-    if (authedUser === null) {
-      button = <span><Link to="/login">Login</Link></span>
-    } else {
-      button = <span>
-          <img src={users[authedUser].avatarURL} alt="" />
-          Hello, {users[authedUser].name} <Link to="/logout">Logout</Link>
-        </span>;
-    }
-
-
-
-
-    return <header className="header">
-          <div className="wrapper">
-            <nav className="main-nav">
-              <Link to="/">
-                Home
-              </Link>
-              <Link to="/add">
-                New Question
-              </Link>
-              <Link to="/leaderboard">
-                Leaderboard
-              </Link>
-            </nav>
-
-            <nav className="login-nav">              
-                {button}       
-            </nav>
-          </div>
-        </header>;
-  }
-}
+      <nav className="login-nav">
+        {authedUser === null ? (
+          <span>
+            <Link to="/login">Login</Link>
+          </span>
+        ) : (
+          <span>
+            <img src={users[authedUser].avatarURL} alt="" />
+            Hello, {users[authedUser].name} <Link to="/logout">Logout</Link>
+          </span>
+        )}
+      </nav>
+    </div>
+  </header>
+);
 
 function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,
     users
-  }
+  };
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(Header);
