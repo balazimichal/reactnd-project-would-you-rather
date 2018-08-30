@@ -70,14 +70,14 @@ class Add extends Component {
                       onChange={this.handleQuestionTwo}
                     />
                     <button
-                      class="waves-effect waves-light btn-large"
+                      className="waves-effect waves-light btn-large"
                       disabled={
                         this.state.questionOne === '' ||
                         this.state.questionTwo === ''
                       }
                     >
                       SUBMIT QUESTIONS
-                      <i class="material-icons right">arrow_right</i>
+                      <i className="material-icons right">arrow_right</i>
                     </button>
                   </form>
                 </div>
