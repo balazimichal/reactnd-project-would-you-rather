@@ -1,57 +1,56 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-const QuestionBox = (props) => {
+const QuestionBox = props => {
+  const viewPoll = id => {
+    props.history.push(`questions/${id}`);
+  };
 
-    const viewPoll = (id) => {
-        props.history.push(`questions/${id}`)
-    }
+  if (props === null) {
+    return <p>This question does not exist.</p>;
+  }
 
+  const { name, avatar, text, id } = props;
 
-    if (props === null) {
-        return <p>This question does not exist.</p>
-    }
-
-    const { name, avatar, text, id } = props
-
-    return <div>
-        <div className="box-header">
-            <h4>{name} asks:</h4>
-        </div>
-        <div className="box-content">
-            <div className="box-left">
-                <img src={avatar} alt={name} className="avatar" />
-            </div>
-            <div className="box-right">
-                <h4>Would you rather...</h4>
-                <p>
-                    ...
+  return (
+    <div className="card question">
+      <div className="card-header">
+        <h6 className="card-title">{name} asks:</h6>
+      </div>
+      <div className="card-content">
+        <div className="row">
+          <div className="col s12 m4 l3">
+            <img src={avatar} alt={name} className="avatar" />
+          </div>
+          <div className="col s12 m8 l9">
+            <h4>Would you rather...</h4>
+            <p>
+              ...
               {text}
-                    ...
+              ...
             </p>
-                <button onClick={(e) => viewPoll(id)}>View poll</button>
-            </div>
+            <button
+              className="waves-effect waves-light btn"
+              onClick={e => viewPoll(id)}
+            >
+              View poll
+            </button>
+          </div>
         </div>
-    </div>;
+      </div>
+    </div>
+  );
+};
+
+function mapStateToProps({ questions, users }, { id }) {
+  const question = questions[id];
+
+  return {
+    name: users[question.author].name,
+    text: question.optionOne.text,
+    avatar: users[question.author].avatarURL,
+    id: question.id
+  };
 }
-
-
-
-
-
-
-
-
-function mapStateToProps({ questions, users }, {id}) {
-    const question = questions[id]
-        
-    return { 
-                name: users[question.author].name, 
-                text: question.optionOne.text, 
-                avatar: users[question.author].avatarURL,
-                id: question.id
-            }
-
-        }
-export default withRouter(connect(mapStateToProps)(QuestionBox))
+export default withRouter(connect(mapStateToProps)(QuestionBox));
