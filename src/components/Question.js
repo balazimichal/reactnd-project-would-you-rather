@@ -61,62 +61,64 @@ class Question extends Component {
       return (
         <div className="container content">
           <div className="row">
-            <div className="box">
-              <div className="box-header">
-                <h4>{users[question.author].name} asks:</h4>
+            <div className="card question">
+              <div className="card-header">
+                <h6 className="card-title">
+                  {users[question.author].name} asks:
+                </h6>
               </div>
-              <div className="box-content">
-                <div className="box-left">
-                  <img
-                    src={users[question.author].avatarURL}
-                    alt=""
-                    className="avatar"
-                  />
-                </div>
-                <div className="box-right">
-                  <h1>Results</h1>
-                  <div className="box">
-                    <div className="box-content">
+              <div className="card-content">
+                <div className="row">
+                  <div className="col s12 m4 l3">
+                    <img
+                      src={users[question.author].avatarURL}
+                      alt=""
+                      className="avatar"
+                    />
+                  </div>
+                  <div className="col s12 m8 l9">
+                    <h1>Results</h1>
+
+                    <div className="box teal lighten-5">
                       <h3>{question.optionOne.text}</h3>
                       {question.optionOne.votes.indexOf(authedUser) !== -1 ? (
                         <span className="choice">Your choice</span>
                       ) : (
                         false
                       )}
-                      <div className="progressbar-wapper">
+                      <div className="progress">
                         <div
-                          className="progressbar"
+                          className="determinate"
                           style={{ width: `${questionOneVotePercent}%` }}
-                        >
-                          <span className="progressbar-value">
-                            {questionOneVotePercent} %
-                          </span>
-                        </div>
+                        />
                       </div>
-                      {question.optionOne.votes.length} out of {totalVoteNum}{' '}
-                      {totalVoteNum > 1 ? 'votes' : 'vote'}
+                      <span className="left">{questionOneVotePercent} %</span>
+                      <span className="right">
+                        {question.optionOne.votes.length} out of {totalVoteNum}{' '}
+                        {totalVoteNum > 1 ? 'votes' : 'vote'}
+                      </span>
+                      <div className="clearfix" />
                     </div>
-                  </div>
-                  <div className="box">
-                    <div className="box-content">
+
+                    <div className="box teal lighten-5">
                       <h3>{question.optionTwo.text}</h3>
                       {question.optionTwo.votes.indexOf(authedUser) !== -1 ? (
                         <span className="choice">Your choice</span>
                       ) : (
                         false
                       )}
-                      <div className="progressbar-wapper">
+                      <div className="progress">
                         <div
-                          className="progressbar"
+                          className="determinate"
                           style={{ width: `${questionTwoVotePercent}%` }}
-                        >
-                          <span className="progressbar-value">
-                            {questionTwoVotePercent} %
-                          </span>
-                        </div>
+                        />
                       </div>
-                      {question.optionTwo.votes.length} out of {totalVoteNum}{' '}
-                      {totalVoteNum > 1 ? 'votes' : 'vote'}
+                      <span className="left">{questionTwoVotePercent} %</span>
+                      <span className="right">
+                        {question.optionTwo.votes.length} out of {totalVoteNum}{' '}
+                        {totalVoteNum > 1 ? 'votes' : 'vote'}
+                      </span>
+                      <div className="clearfix" />
                     </div>
                   </div>
                 </div>

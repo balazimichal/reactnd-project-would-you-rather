@@ -39,6 +39,7 @@ select {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+  border: 3px solid #ce93d8;
 }
 
 header .avatar {
@@ -87,8 +88,9 @@ center {
 
 .card-header {
   padding: 20px;
-  border-bottom: 1px solid #f5f5f5;
-  background: #f5f5f5;
+  border-top: 3px solid #4a148c;
+  background: #7b1fa2;
+  color: #fff;
 }
 
 .card-header h6 {
@@ -102,6 +104,29 @@ center {
 .answered.tab.active,
 .unanswered.tab.active {
   display: block;
+}
+
+.box {
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.choice {
+  width: 70px;
+  height: 70px;
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #827717;
+  color: #fff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 70px;
+  font-size: 10px;
 }
 
 /*
