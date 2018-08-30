@@ -59,8 +59,8 @@ class Question extends Component {
       question.optionTwo.votes.indexOf(authedUser) !== -1
     ) {
       return (
-        <section>
-          <div className="wrapper">
+        <div className="container content">
+          <div className="row">
             <div className="box">
               <div className="box-header">
                 <h4>{users[question.author].name} asks:</h4>
@@ -123,53 +123,69 @@ class Question extends Component {
               </div>
             </div>
           </div>
-        </section>
+        </div>
       );
     }
 
     return (
-      <section>
-        <div className="wrapper">
-          <div className="box">
-            <div className="box-header">
-              <h4>{users[question.author].name} asks:</h4>
+      <div className="container content">
+        <div className="row">
+          <div className="card question">
+            <div className="card-header">
+              <h6 className="card-title">
+                {users[question.author].name} asks:
+              </h6>
             </div>
-            <div className="box-content">
-              <div className="box-left">
-                <img
-                  src={users[question.author].avatarURL}
-                  alt=""
-                  className="avatar"
-                />
-              </div>
-              <div className="box-right">
-                <h1>Would You Rather ...</h1>
-                <form onSubmit={this.handleSubmit}>
-                  <label>
-                    <input
-                      type="radio"
-                      name="options"
-                      onChange={() => this.handleSelection('optionOne')}
-                      checked={this.state.option === 'optionOne'}
-                    />{' '}
-                    {question.optionOne.text}
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="options"
-                      onChange={() => this.handleSelection('optionTwo')}
-                      checked={this.state.option === 'optionTwo'}
-                    />{' '}
-                    {question.optionTwo.text}
-                  </label>
-                  <button disabled={this.state.submit}>Submit</button>
-                </form>
+            <div className="card-content">
+              <div className="row">
+                <div className="col s12 m4 l3">
+                  <img
+                    src={users[question.author].avatarURL}
+                    alt=""
+                    className="avatar"
+                  />
+                </div>
+                <div className="col s12 m8 l9">
+                  <h1>Would You Rather ...</h1>
+                  <form onSubmit={this.handleSubmit}>
+                    <p>
+                      <label>
+                        <input
+                          name="options"
+                          type="radio"
+                          onChange={() => this.handleSelection('optionOne')}
+                          checked={this.state.option === 'optionOne'}
+                        />
+                        <span>{question.optionOne.text}</span>
+                      </label>
+                    </p>
+
+                    <p>
+                      <label>
+                        <input
+                          name="options"
+                          type="radio"
+                          onChange={() => this.handleSelection('optionTwo')}
+                          checked={this.state.option === 'optionTwo'}
+                        />
+                        <span>{question.optionTwo.text}</span>
+                      </label>
+                    </p>
+
+                    <button
+                      className="waves-effect waves-light btn"
+                      disabled={this.state.submit}
+                    >
+                      SUBMIT YOUR ANSWER{' '}
+                      <i className="material-icons right">arrow_right</i>
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }
