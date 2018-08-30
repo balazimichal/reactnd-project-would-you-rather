@@ -65,6 +65,17 @@ hr {
   background: #ddd;
 }
 
+center {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #ddd;
+  font-weight: bold;
+}
+
+.btn-large {
+  margin-top: 20px;
+}
+
 /*
 body {
   background: #f5f5f5;
