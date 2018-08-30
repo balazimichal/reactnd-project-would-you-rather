@@ -1,13 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default () => {
   return (
-    <section>
-      <div className='wrapper'>
-        <h3>Page not found</h3>
-        <p>You can return <Link to="/">home</Link>.</p>
+    <div className="container content">
+      <div className="row">
+        <h1 className="center-align">Page not found</h1>
+        <p className="center-align">
+          You can return <Link to="/">home</Link>.
+        </p>
       </div>
-    </section>
-  )
-}
+    </div>
+  );
+};
