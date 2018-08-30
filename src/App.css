@@ -1,19 +1,26 @@
 h1 {
   font-size: 34px;
   line-height: 48px;
+  margin: 0;
   margin-bottom: 30px;
 }
 
 h2 {
   font-size: 28px;
   line-height: 34px;
+  margin: 0;
   margin-bottom: 30px;
 }
 
 h3 {
   font-size: 22px;
   line-height: 28px;
+  margin: 0;
   margin-bottom: 30px;
+}
+
+.container.content {
+  padding: 50px 0;
 }
 
 .card-title {
@@ -24,16 +31,38 @@ select {
   margin-bottom: 20px;
 }
 
-header .avatar {
-  width: 30px;
-  height: 30px;
+.avatar {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+}
+
+header .avatar {
+  width: 30px;
+  height: 30px;
   margin: 0 10px;
   position: relative;
   top: 10px;
   border: 1px solid white;
+}
+
+.score {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 30px;
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: #ddd;
 }
 
 /*

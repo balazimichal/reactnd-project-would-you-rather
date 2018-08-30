@@ -21,7 +21,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container content">
         <div className="row">
           <h1 className="center-align">Welcome to the Would You Rather App!</h1>
         </div>
@@ -52,7 +52,7 @@ class Login extends Component {
                     disabled={this.state.user === 'none'}
                   >
                     Sign In
-                    <i class="material-icons right">arrow_right</i>
+                    <i className="material-icons right">arrow_right</i>
                   </button>
                 </form>
               </div>

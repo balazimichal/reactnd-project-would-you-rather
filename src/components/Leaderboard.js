@@ -4,8 +4,8 @@ import LeaderboardBox from './LeaderboardBox';
 import PropTypes from 'prop-types';
 
 const Leaderboard = ({ users }) => (
-  <section>
-    <div className="wrapper">
+  <div className="container content">
+    <div className="row">
       {Object.keys(users)
         .map(user => {
           return {
@@ -22,7 +22,7 @@ const Leaderboard = ({ users }) => (
           </div>
         ))}
     </div>
-  </section>
+  </div>
 );
 
 Leaderboard.propTypes = {

@@ -6,23 +6,27 @@ const LeaderboardBox = ({ name, avatar, answers, questions }) => {
     return <p>This question does not exist.</p>;
   } else {
     return (
-      <div className="box card">
-        <div className="box-left">
-          <img src={avatar} alt="" className="avatar" />
-        </div>
-        <div className="box-second">
-          <h2>{name}</h2>
-          <p>
-            Answered questions <span className="alignright">{answers}</span>
-          </p>
-          <hr />
-          <p>
-            Created questions <span className="alignright">{questions}</span>
-          </p>
-        </div>
-        <div className="box-third">
-          <h3>Score</h3>
-          <span className="score">{answers + questions}</span>
+      <div className="card">
+        <div className="card-content">
+          <div className="row">
+            <div className="col s12 m4 l3">
+              <img src={avatar} alt="" className="avatar" />
+            </div>
+            <div className="col s12 m6">
+              <h2>{name}</h2>
+              <p>
+                Answered questions <span>{answers}</span>
+              </p>
+              <hr />
+              <p>
+                Created questions <span>{questions}</span>
+              </p>
+            </div>
+            <div className="col s12 m2 l3">
+              <h3>Score</h3>
+              <span className="score lime darken-4">{answers + questions}</span>
+            </div>
+          </div>
         </div>
       </div>
     );
