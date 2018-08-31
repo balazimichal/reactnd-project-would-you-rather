@@ -2,6 +2,9 @@
 
 This is the final assessment project for Udacity's React - Redux course. This app a web app that lets a user play the “Would You Rather?” game. This project solidify understanding of React and Redux,  improving the predictability of the application’s state; establish strict rules for getting, listening, and updating the store; and identify what state should live inside of Redux and what state should live inside of React components.
 
+You can preview this app on surge:
+chief-land.surge.sh
+
 ## Installation instructions
 
 To run this project follow this steps:
