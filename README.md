@@ -13,6 +13,13 @@ To run this project follow this steps:
 - CD into the project and install the dependencies with ```yarn install``` or ```npm i```
 - Run the app with ```yarn start``` or ```npm start```
 
+## Deployment instructions
+
+- Install surge globally with ``npm install --global surge``
+- Deploy with ``surge -p build``
+- Redeploy with ``surge --domain wouldyourather.surge.sh``
+- OR create a CNAME file in the root with the name of the domain inside only ``wouldyourather.surge.sh`` and redeploy with ``surge`` (no need to type domain afterwards)
+
 ## Requirements for the project
 
 - Code adheres to udacity HTML, CSS, JavaScript, and Git style guidelines.
